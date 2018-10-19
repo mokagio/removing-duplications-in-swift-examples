@@ -10,6 +10,7 @@
 		3FAF20202179D25B00701708 /* FoodLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAF20162179D25B00701708 /* FoodLogger.framework */; };
 		3FAF20272179D25B00701708 /* FoodLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAF20192179D25B00701708 /* FoodLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FAF20332179DC0300701708 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF20322179DC0300701708 /* Storage.swift */; };
+		3FAF20352179DC4300701708 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF20342179DC4300701708 /* Food.swift */; };
 		3FAF20372179DC8100701708 /* StorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF20362179DC8100701708 /* StorageMock.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		3FAF201F2179D25B00701708 /* FoodLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAF20262179D25B00701708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FAF20322179DC0300701708 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		3FAF20342179DC4300701708 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		3FAF20362179DC8100701708 /* StorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 		3FAF20182179D25B00701708 /* FoodLogger */ = {
 			isa = PBXGroup;
 			children = (
+				3FAF20342179DC4300701708 /* Food.swift */,
 				3FAF20192179D25B00701708 /* FoodLogger.h */,
 				3FAF201A2179D25B00701708 /* Info.plist */,
 				3FAF20322179DC0300701708 /* Storage.swift */,
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FAF20332179DC0300701708 /* Storage.swift in Sources */,
+				3FAF20352179DC4300701708 /* Food.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
