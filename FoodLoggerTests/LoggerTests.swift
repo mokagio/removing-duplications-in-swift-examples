@@ -3,30 +3,30 @@ import XCTest
 
 class FoodLoggerTests: XCTestCase {
 
-    func testLoggerLogsMessageWithPasta() {
+    func testLoggerLogs() {
         let storageMock = StorageMock()
-        let logger = Logger(storage: storageMock)
+        let logger = Logger(
+            transformation: { _ in return "something" },
+            storage: storageMock
+        )
 
-        logger.log(Pasta())
+        logger.log("any input")
 
-        XCTAssert(storageMock.hasStored("There's nothing like home made pasta"))
+        XCTAssert(storageMock.hasStored("something"))
     }
 
-    func testLoggerLogsMessageWithPizza() {
-        let storageMock = StorageMock()
-        let logger = Logger(storage: storageMock)
-
-        logger.log(Pizza())
-
-        XCTAssert(storageMock.hasStored("Pizza is awesome!"))
-    }
-
-    func testLoggerLogsMessageWithGelato() {
-        let storageMock = StorageMock()
-        let logger = Logger(storage: storageMock)
-
-        logger.log(Gelato())
-
-        XCTAssert(storageMock.hasStored("I love gelato any time of the year"))
+    func testTransformation() {
+        XCTAssertEqual(
+            extractLogMessage(fromInput: Gelato()),
+            "I love gelato any time of the year"
+        )
+        XCTAssertEqual(
+            extractLogMessage(fromInput: Pasta()),
+            "There's nothing like home made pasta"
+        )
+        XCTAssertEqual(
+            extractLogMessage(fromInput: Pizza()),
+            "Pizza is awesome!"
+        )
     }
 }

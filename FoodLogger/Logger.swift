@@ -1,21 +1,30 @@
 class Logger {
 
+    let transformation: (Any) -> String
     let storage: Storage
 
-    init(storage: Storage) {
+    init(
+        transformation: @escaping (Any) -> String = extractLogMessage(fromInput:),
+        storage: Storage
+    ) {
+        self.transformation = transformation
         self.storage = storage
     }
 
     func log(_ input: Any) {
-        switch input {
-        case is Gelato:
-            storage.persist("I love gelato any time of the year")
-        case is Pasta:
-            storage.persist("There's nothing like home made pasta")
-        case is Pizza:
-            storage.persist("Pizza is awesome!")
-        case _:
-            storage.persist("\(input)")
-        }
+        storage.persist(transformation(input))
+    }
+}
+
+func extractLogMessage(fromInput input: Any) -> String {
+    switch input {
+    case is Gelato:
+        return "I love gelato any time of the year"
+    case is Pasta:
+        return "There's nothing like home made pasta"
+    case is Pizza:
+        return "Pizza is awesome!"
+    case _:
+        return "\(input)"
     }
 }
