@@ -1,4 +1,5 @@
 @testable import FoodLogger
+import Nimble
 import XCTest
 
 class FoodLoggerTests: XCTestCase {
@@ -9,7 +10,7 @@ class FoodLoggerTests: XCTestCase {
 
         logger.log(Pasta())
 
-        XCTAssert(storageMock.hasStored("There's nothing like home made pasta"))
+        expect(storageMock.hasStored("There's nothing like home made pasta")) == true
     }
 
     func testLoggerLogsMessageWithPizza() {
@@ -18,7 +19,7 @@ class FoodLoggerTests: XCTestCase {
 
         logger.log(Pizza())
 
-        XCTAssert(storageMock.hasStored("Pizza is awesome!"))
+        expect(storageMock.hasStored("Pizza is awesome!")) == true
     }
 
     func testLoggerLogsMessageWithGelato() {
@@ -27,6 +28,6 @@ class FoodLoggerTests: XCTestCase {
 
         logger.log(Gelato())
 
-        XCTAssert(storageMock.hasStored("I love gelato any time of the year"))
+        expect(storageMock.hasStored("I love gelato any time of the year")) == true
     }
 }
