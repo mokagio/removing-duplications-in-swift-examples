@@ -4,29 +4,27 @@ import XCTest
 class FoodLoggerTests: XCTestCase {
 
     func testLoggerLogsMessageWithPasta() {
-        let storageMock = StorageMock()
-        let logger = Logger(storage: storageMock)
-
-        logger.log(Pasta())
-
-        XCTAssert(storageMock.hasStored("There's nothing like home made pasta"))
+        expectLogger(toLog: "There's nothing like home made pasta", forInput: Pasta())
+        expectLogger(toLog: "Pizza is awesome!", forInput: Pizza())
+        expectLogger(toLog: "I love gelato any time of the year", forInput: Gelato())
     }
 
-    func testLoggerLogsMessageWithPizza() {
+    private func expectLogger(
+        toLog output: String,
+        forInput input: Any,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
         let storageMock = StorageMock()
         let logger = Logger(storage: storageMock)
 
-        logger.log(Pizza())
+        logger.log(input)
 
-        XCTAssert(storageMock.hasStored("Pizza is awesome!"))
-    }
-
-    func testLoggerLogsMessageWithGelato() {
-        let storageMock = StorageMock()
-        let logger = Logger(storage: storageMock)
-
-        logger.log(Gelato())
-
-        XCTAssert(storageMock.hasStored("I love gelato any time of the year"))
+        XCTAssert(
+            storageMock.hasStored(output),
+            "\"\(output)\" was not logged.",
+            file: file,
+            line: line
+        )
     }
 }
